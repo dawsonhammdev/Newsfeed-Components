@@ -117,28 +117,51 @@ const data = [
 
 //1
 
+const articles = document.querySelector('.articles');
+
+data.forEach(i => {
+  articles.append(createCard(i.title, i.date, i.firstParagraph, i.secondParagraph,i.thirdParagraph))
+})
+
 function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph, button) {
   const article = document.createElement('div');
   const titleArticle = document.createElement('h2');
   const dateArticle = document.createElement('p');
+  const firstArticle = document.createElement('p');
+  const secondArticle = document.createElement('p');
+  const thirdArticle = document.createElement('p');
   const buttonArticle = document.createElement('span');
+  
+  titleArticle.textContent = title;
+  dateArticle.textContent = date;
+  firstArticle.textContent = firstParagraph;
+  secondArticle.textContent = secondParagraph;
+  thirdArticle.textContent = thirdParagraph;
+  buttonArticle.textContent = "expand button";
 
   article.append(titleArticle);
   article.append(dateArticle);
+  article.append(firstArticle);
+  article.append(secondArticle);
+  article.append(thirdArticle);
   article.append(buttonArticle);
 
   article.classList.add('article');
-  buttonArticle.classList.add('expandButton')
-
-  titleArticle.textContent = title;
-  dateArticle.textcontent = date;
-  buttonArticle.textContent = button;
+  dateArticle.classList.add('date');
+  buttonArticle.classList.add('expandButton');
+  
 
 
+
+
+buttonArticle.addEventListener('click', event => {
+  article.classList.toggle('article-open');
+})
 
   
   return article
 
 }
+
 
 
